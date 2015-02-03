@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/MyServlet")
@@ -27,8 +28,17 @@ public class MyServlet extends HttpServlet {
 		
 		String text = request.getParameter("text");
 		
+		HttpSession session = request.getSession(true);
+		session.getAttribute("text");
+
+		request.getRequestDispatcher("/page2.jsp").include(request, response);
+
+		//response.sendRedirect("page2.jsp");
+		
 		PrintWriter out = response.getWriter();
 		out.print("printwritter " + text);
+
+		
 		
 	}
 
