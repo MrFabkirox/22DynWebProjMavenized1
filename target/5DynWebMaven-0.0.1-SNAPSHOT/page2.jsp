@@ -8,7 +8,37 @@
 </head>
 <body>
 
-page2
+	<%@ include file="/menu.jsp"%>
+
+	<h2>page2</h2>
+
+	<p>
+	
+		<span>
+			<s:property value="text"/>
+		</span>
+		
+		<%
+			String username = request.getParameter("username");
+		
+			if (username != null) {
+				session.setAttribute("sessionUserName", username);
+				application.setAttribute("applicationUserName", username);
+				pageContext.setAttribute("pageContextUserName", username);
+			}
+		%>
+		
+		<%String country = request.getParameter("country"); 
+		System.out.println(request.getAttribute("lastname"));
+		System.out.println(session.getAttribute("lastname"));
+		System.out.println(application.getAttribute("lastname"));
+
+		System.out.println(pageContext.getAttribute("pageContextUserName"));
+		%>
+		
+		country is <%=country %>
+	
+	</p>
 
 </body>
 </html>
